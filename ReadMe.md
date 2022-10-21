@@ -37,8 +37,18 @@ maximos@uoguelph.ca
 Keep a log of what things you accomplish when.  You can use git's tagging feature to tag the versions or you can reference commits.
 
 * 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+    * ConnectFour Class
+    * added setPlayer method
+    * added setPlayer method
+        * started main
+            * program now prints board
+            * program now takes in user input
+            * program now switches players
+    * TextUI Class
+        * moved printBoard method to TextUI from ConnectFour
+        * added turn method
+        * added printPlayerTurnMessage method
+        * added collectInput method
 * 0.1
     * 
     * Board Class
@@ -48,7 +58,7 @@ Keep a log of what things you accomplish when.  You can use git's tagging featur
         * added checkBoardToken method
         * added checkWinner method  
     * ConnectFour Class
-        * added printBoard class
+        * added printBoard method
     
 
 ## Acknowledgments

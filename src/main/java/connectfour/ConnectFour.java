@@ -1,17 +1,37 @@
 package connectfour;
 
 public class ConnectFour{
-    private Board gameBoard = new Board();
 
-    private void printBoard(int[][] Board.data){
-        for (int i = 0; i < 6; i++){
-            System.out.println("+---+---+---+---+---+---+---+");
-            System.out.print("|");
-            for (int j = 0; j < 7; j++){
-                System.out.printf(" %d |", data[j][i]);
-            }
-            System.out.print("\n");
+    private int currentPlayer = 2;
+
+    public static void main(String[] args){
+        Board gameBoard = new Board();
+        TextUI gameUI = new TextUI();
+        ConnectFour game = new ConnectFour();
+        int depth = 0;
+        int userInput;
+
+        gameBoard.initializeBoard();
+
+        while (gameBoard.checkWinner() == -1 && depth < 42){
+            userInput = gameUI.turn(game.getPlayer(), gameBoard.toString());
+            depth++;
         }
-        System.out.println("+---+---+---+---+---+---+---+");
+
     }
+
+    private int setPlayer(){
+        if (currentPlayer == 1){
+            currentPlayer = 2;
+        }else{
+            currentPlayer = 1;
+        }
+
+        return currentPlayer;
+    }
+
+    public int getPlayer(){
+        return setPlayer();
+    }
+
 }
