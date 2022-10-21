@@ -9,7 +9,6 @@ public class ConnectFour{
         TextUI gameUI = new TextUI();
         ConnectFour game = new ConnectFour();
         int depth = 0;
-        gameBoard.initializeBoard();
 
         while (gameBoard.checkWinner() == -1 && depth < 42){
             gameUI.turn(game.getPlayer(), gameBoard);
