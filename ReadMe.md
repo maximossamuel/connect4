@@ -1,6 +1,6 @@
-# Project Title
+# CIS*2430 A2: Connect Four
 
-Simple overview of use/purpose.
+This is a Connect Four game meant for two players.
 
 ## Description
 
@@ -29,7 +29,8 @@ What isn't done? What things cause errors?
 
 ## Author Information
 
-Your name and contact information including your email address
+Maximos Samuel
+maximos@uoguelph.ca
 
 ## Development History
 
@@ -39,7 +40,16 @@ Keep a log of what things you accomplish when.  You can use git's tagging featur
     * Various bug fixes and optimizations
     * See [commit change]() or See [release history]()
 * 0.1
-    * Initial Release
+    * 
+    * Board Class
+        * added initializeBoard method
+        * added checkInput method
+        * added updateBoard method
+        * added checkBoardToken method
+        * added checkWinner method  
+    * ConnectFour Class
+        * added printBoard class
+    
 
 ## Acknowledgments
 
