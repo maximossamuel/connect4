@@ -17,7 +17,6 @@ public class ConnectFour{
             userInput = gameUI.turn(game.getPlayer(), gameBoard.toString());
             depth++;
         }
-
     }
 
     private int setPlayer(){

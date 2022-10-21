@@ -11,22 +11,18 @@ public class Board{
         }
     }
 
-    private boolean checkInput(int input){
-        return input <= 7 || input >= 1;
-    }
-
-    private boolean checkBoardToken(int input, int player){
-        for (int i = input; i < 42; i = i + input){
-            if (data.get(i) == 0){
-                return true;
+    private int checkBoardToken(int input, int player){
+        for (int i = input * 7; i > 0; i = i - 7){
+            if (data.get(i - 1) == 0){
+                return i - 1;
             }
         }
 
-        return false;
+        return -1;
     }
 
     public void updateBoard(int input, int player){
-        if (checkBoardToken(input, player) && checkInput(input)){
+        if (checkBoardToken(input, player) != -1){
             data.set(input, player);
         } 
     }

@@ -36,6 +36,10 @@ maximos@uoguelph.ca
 
 Keep a log of what things you accomplish when.  You can use git's tagging feature to tag the versions or you can reference commits.
 
+* 0.3
+    * Working check of inputs not between 1 and 7
+    * TextUI Class
+        * moved checkInput method to TextUI from Board
 * 0.2
     * ConnectFour Class
     * added setPlayer method
