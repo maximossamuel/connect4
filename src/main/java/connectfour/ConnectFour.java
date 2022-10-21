@@ -9,12 +9,10 @@ public class ConnectFour{
         TextUI gameUI = new TextUI();
         ConnectFour game = new ConnectFour();
         int depth = 0;
-        int userInput;
-
         gameBoard.initializeBoard();
 
         while (gameBoard.checkWinner() == -1 && depth < 42){
-            userInput = gameUI.turn(game.getPlayer(), gameBoard.toString());
+            gameUI.turn(game.getPlayer(), gameBoard);
             depth++;
         }
     }

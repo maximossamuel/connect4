@@ -36,6 +36,8 @@ maximos@uoguelph.ca
 
 Keep a log of what things you accomplish when.  You can use git's tagging feature to tag the versions or you can reference commits.
 
+* 0.4
+    * Inserting into columns "works" but program throws errors due to reaching indexes out of bounds
 * 0.3
     * Working check of inputs not between 1 and 7
     * TextUI Class

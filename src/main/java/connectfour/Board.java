@@ -11,8 +11,8 @@ public class Board{
         }
     }
 
-    private int checkBoardToken(int input, int player){
-        for (int i = input * 7; i > 0; i = i - 7){
+    private int checkBoardToken(int input){
+        for (int i = input + 35; i > 0; i -= 7){
             if (data.get(i - 1) == 0){
                 return i - 1;
             }
@@ -21,9 +21,14 @@ public class Board{
         return -1;
     }
 
-    public void updateBoard(int input, int player){
-        if (checkBoardToken(input, player) != -1){
-            data.set(input, player);
+    public boolean updateBoard(int input, int player){
+        int tokenIndexToBeUpdated = checkBoardToken(input);
+        
+        if (tokenIndexToBeUpdated != -1){
+            data.set(tokenIndexToBeUpdated, player);
+            return true;
+        }else{
+            return false;
         } 
     }
 

@@ -5,24 +5,21 @@ import java.util.Scanner;
 public class TextUI{
     private Scanner keyboardScanner = new Scanner(System.in);
 
-    private String invalidInpuString = "Invalid input. Enter the column you wish to insert into (1-7): ";
+    private String invalidInputString = "Invalid or input. Enter the column you wish to insert into (1-7): ";
 
-    public int turn(int currentPlayer, String boardString){
+    public  void turn(int currentPlayer, Board gameBoard){
         int userInput;
 
         System.out.println("============================================================");
-        printBoard(boardString);
+        printBoard(gameBoard.toString());
         System.out.print(printPlayerTurnMessage(currentPlayer));
         
         userInput = collectInput();
 
-        while (!isInputValid(userInput)){
-            System.out.print(invalidInpuString);
+        while (!isInputValid(userInput) || !gameBoard.updateBoard(userInput, currentPlayer)){
+            System.out.print(invalidInputString);
             userInput = collectInput();   
         }
-
-        return userInput;
-    
     }
 
     private void printBoard(String boardString){
