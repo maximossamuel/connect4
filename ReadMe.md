@@ -36,6 +36,8 @@ maximos@uoguelph.ca
 
 Keep a log of what things you accomplish when.  You can use git's tagging feature to tag the versions or you can reference commits.
 
+* 0.6
+    * Error handling done on game input
 * 0.5
     * Adjusted program to work with a 2D array instead of an ArrayList
         * Modifications done on all methods in Board class

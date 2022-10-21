@@ -6,7 +6,7 @@ public class TextUI{
     private Scanner keyboardScanner = new Scanner(System.in);
 
     private String inputPromptString = "Enter the column you wish to insert into (1-7): ";
-    private String invalidInputString = "Invalid or input. ";
+    private String invalidInputString = "Invalid or illegal input. ";
     private String winnerString = "The winner is ";
     private String tieString = "It's a tie!\n";
 
@@ -42,7 +42,13 @@ public class TextUI{
     private int collectInput(){
         int userInput;
 
-        userInput = keyboardScanner.nextInt();  
+        try {
+            userInput = keyboardScanner.nextInt();
+        }catch(Exception e) {
+            keyboardScanner = new Scanner(System.in);
+            userInput = -1;
+        }
+
         return userInput;
     }
 
