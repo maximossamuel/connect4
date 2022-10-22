@@ -70,6 +70,10 @@ public class Board{
             }
         }
 
+        /*
+        * Check to see if the game within file is valid 
+        * (e.g, if player 1 has 3 more tokens than 2, it is not valid)
+        */
         if ((numP1Moves != numP2Moves + 1) && (numP1Moves != numP2Moves)){
             return -1;
         }
@@ -111,8 +115,15 @@ public class Board{
 
     public boolean saveTofile(String filename){
         try {
+            /*
+            * newFile handles the creation of a new file and prepares for the exception
+            * that a file with the name in the filename string already exists
+            */
             File newFile = new File("assets/" + filename + ".csv");
             if (newFile.createNewFile()){
+                /*
+                * Writing to file
+                */
                 FileWriter writer = new FileWriter("assets/" + filename + ".csv");
                 for (int i = 0; i < 6; i++){
                     for (int j = 0; j < 7; j++){
