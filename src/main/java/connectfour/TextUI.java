@@ -19,11 +19,9 @@ public class TextUI{
     private String winnerString = "The winner is Player ";
     private String tieString = "It's a tie!\n";
 
-    /**
+    /*
      * Handles all the user inputs and outputs when trying
      * to load the game from a file
-     * @return Returns a string containing the name of the file so
-     * it can be used in other methods to load the file.
      */
     public String loadFromFilePrompts(){
         int userInput;
@@ -31,6 +29,9 @@ public class TextUI{
         printMessage(fileReadPrompt1);
         userInput = collectInput();
 
+        /*
+         * Check if input is 1 or 2
+         */
         while (!isInputValid(userInput, 1, 2)){
             printMessage(invalidInputString + fileReadPrompt1);
             userInput = collectInput();
@@ -51,18 +52,34 @@ public class TextUI{
     public void turn(int currentPlayer, Board gameBoard){
         int userInput;
 
+        /*
+         * Printing of board
+         */
         System.out.println("============================================================");
         printBoard(gameBoard.toString());
         printMessage("Player " + currentPlayer + "" + "'s turn. " + inputPromptString);
         
         userInput = collectInput();
 
+        /*
+         * Check if input is between 1 and 7. If input is 8 or 9, there are checks
+         * within the while loop that account for that
+         */
         while (!isInputValid(userInput, 1, 7) || !gameBoard.updateBoard(userInput, currentPlayer)){
             if (userInput == 8){
                 saveToFilePrompts(gameBoard);
+
+                /*
+                 * turn() is called again within the method so that depth does not
+                 * go up after just saving to a file
+                 */
                 turn(currentPlayer, gameBoard);
                 return;
             }else if (userInput == 9){
+
+                /*
+                 * Exit if user inputs 9
+                 */
                 System.exit(0);
             }
 
@@ -90,6 +107,9 @@ public class TextUI{
         System.out.print(boardString);
     }
 
+    /*
+     * Collects and returns an int input by user
+     */
     private int collectInput(){
         int userInput;
 
@@ -108,6 +128,9 @@ public class TextUI{
         return userInput;
     }
 
+    /*
+     * Collects and returns string input by user
+     */
     private String collectStringInput(){
         String userString;
 
@@ -117,6 +140,9 @@ public class TextUI{
         return userString;
     }
 
+    /*
+     * Checks to see if input is in between lowestNum and highestNum
+     */
     private boolean isInputValid(int input, int lowestNum, int highestNum){
         return input <= highestNum && input >= lowestNum;
     }
@@ -150,7 +176,7 @@ public class TextUI{
         }
     }
 
-    /**
+    /*
      * Prints at a point where the user wants to load a file that either
      * does not exist, is not valid or cannot be opened.
      */
