@@ -3,35 +3,68 @@ package connectfour;
 import java.util.Scanner;
 
 public class TextUI{
-    private Scanner keyboardScanner = new Scanner(System.in);
+    private Scanner keyboardScanner;
 
-    private String inputPromptString = "Enter the column you wish to insert into (1-7): ";
+    private String fileReadPrompt1 = "Would you like to load a previously saved game? (1 for yes, 2 for no): ";
+    private String fileReadPrompt2 = "Enter the file you wish to load from (No need for .csv extension in input): ";
+    private String fileReadError = "Sorry, this file either does not exist or is invalid. ";
+    private String inputPromptString = "Enter the column you wish to insert into (1-7), 8 to save game or 9 to exit: ";
+    private String fileSavePrompt = "Enter the name of the file you wish to save to: ";
+    private String fileSaveError = "Sorry. But this file already exists. Try again. ";
     private String invalidInputString = "Invalid or illegal input. ";
-    private String winnerString = "The winner is ";
+    private String winnerString = "The winner is Player ";
     private String tieString = "It's a tie!\n";
 
-    public  void turn(int currentPlayer, Board gameBoard){
+    public String loadFromFilePrompts(){
+        int userInput;
+
+        printMessage(fileReadPrompt1);
+        userInput = collectInput();
+
+        while (!isInputValid(userInput, 1, 2)){
+            printMessage(invalidInputString + fileReadPrompt1);
+            userInput = collectInput();
+        }
+
+        if (userInput == 1){
+            printMessage(fileReadPrompt2);
+            return collectStringInput() + ".csv";
+        }else{
+            return null;
+        }
+    }
+
+    public void turn(int currentPlayer, Board gameBoard){
         int userInput;
 
         System.out.println("============================================================");
         printBoard(gameBoard.toString());
-        printPlayerTurnMessage(currentPlayer);
+        printMessage("Player " + currentPlayer + "" + "'s turn. " + inputPromptString);
         
         userInput = collectInput();
 
-        while (!isInputValid(userInput) || !gameBoard.updateBoard(userInput, currentPlayer)){
-            printInvalidInputMessage();
+        while (!isInputValid(userInput, 1, 7) || !gameBoard.updateBoard(userInput, currentPlayer)){
+            if (userInput == 8){
+                saveToFilePrompts(gameBoard);
+                turn(currentPlayer, gameBoard);
+                return;
+            }else if (userInput == 9){
+                System.exit(0);
+            }
+
+            printMessage(invalidInputString + inputPromptString);
             userInput = collectInput();   
         }
     }
 
     public void endOfGameMessage(Board gameBoard){
+        System.out.println("============================================================");
         printBoard(gameBoard.toString());
 
         if (gameBoard.checkWinner() == -1){
-            printTieMessage();
+            printMessage(tieString);
         }else{
-            printWinnerMessage(gameBoard.checkWinner());
+            printMessage(winnerString + gameBoard.checkWinner() + "" + "\n");
         }
     }
 
@@ -42,34 +75,56 @@ public class TextUI{
     private int collectInput(){
         int userInput;
 
+        keyboardScanner = new Scanner(System.in);
+
         try {
             userInput = keyboardScanner.nextInt();
         }catch(Exception e) {
-            keyboardScanner = new Scanner(System.in);
             userInput = -1;
         }
 
         return userInput;
     }
 
-    private boolean isInputValid(int input){
-        return input <= 7 && input >= 1;
+    private String collectStringInput(){
+        String userString;
+
+        keyboardScanner = new Scanner(System.in);
+        userString = keyboardScanner.nextLine();
+
+        return userString;
     }
 
-    private void printPlayerTurnMessage(int currentPlayer){
-        System.out.print("Player " + currentPlayer + "" + "'s turn. " + inputPromptString);
+    private boolean isInputValid(int input, int lowestNum, int highestNum){
+        return input <= highestNum && input >= lowestNum;
     }
 
-    private void printInvalidInputMessage(){
-        System.out.print(invalidInputString + inputPromptString);
+    private void saveToFilePrompts(Board gameBoard){
+        boolean didFileSave;
+
+        printMessage(fileSavePrompt);
+        didFileSave = gameBoard.saveTofile(collectStringInput());
+
+        while (!didFileSave){
+            printMessage(fileSaveError);
+            printMessage(fileSavePrompt);
+            didFileSave = gameBoard.saveTofile(collectStringInput());
+        }
     }
 
-    private void printWinnerMessage(int winner){
-        System.out.print(winnerString + winner + "");
+    private void printMessage(String stringToPrint){
+        System.out.print(stringToPrint);
     }
 
-    private void printTieMessage(){
-        System.out.print(tieString);
+    public void printWinner(int winner){
+        if (winner == -1){
+            printMessage(tieString);
+        }else{
+            printMessage(winnerString + "Player" + winner + "");
+        }
     }
 
+    public void printFileReadError(){
+        printMessage(fileReadError);
+    }
 }

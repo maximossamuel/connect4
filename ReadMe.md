@@ -36,6 +36,9 @@ maximos@uoguelph.ca
 
 Keep a log of what things you accomplish when.  You can use git's tagging feature to tag the versions or you can reference commits.
 
+* 0.7
+    * Added load and save from file functionality
+    * Added winner/tie messages at the end of the game
 * 0.6
     * Error handling done on game input
 * 0.5
