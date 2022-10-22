@@ -13,7 +13,7 @@ public class TextUI{
     private String fileReadPrompt2 = "Enter the file you wish to load from (No need for .csv extension in input): ";
     private String fileReadError = "Sorry, this file either does not exist or is invalid. ";
     private String inputPromptString = "Enter the column you wish to insert into (1-7), 8 to save game or 9 to exit: ";
-    private String fileSavePrompt = "Enter the name of the file you wish to save to: ";
+    private String fileSavePrompt = "Enter the name of the file you wish to save to (No need to input extension): ";
     private String fileSaveError = "Sorry. But this file already exists. Try again. ";
     private String invalidInputString = "Invalid or illegal input. ";
     private String winnerString = "The winner is Player ";
