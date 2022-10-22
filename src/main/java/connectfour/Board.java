@@ -51,6 +51,9 @@ public class Board{
                      * Conversion from string to int
                      */
                     data[i][j] = Integer.parseInt(tokens[j]);
+                    if (data[i][j] > 2 || data[i][j] < 0){
+                        return -1;
+                    }
 
                     /*
                      * numP1Moves and numP2Moves made and used to ensure that a CSV file was not submitted where
