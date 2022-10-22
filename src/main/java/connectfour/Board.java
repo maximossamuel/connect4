@@ -116,14 +116,14 @@ public class Board{
     public boolean saveTofile(String filename){
         try {
             /*
-            * newFile handles the creation of a new file and prepares for the exception
-            * that a file with the name in the filename string already exists
-            */
+             * newFile handles the creation of a new file and prepares for the exception
+             * that a file with the name in the filename string already exists
+             */
             File newFile = new File("assets/" + filename + ".csv");
             if (newFile.createNewFile()){
                 /*
-                * Writing to file
-                */
+                 * Writing to file
+                 */
                 FileWriter writer = new FileWriter("assets/" + filename + ".csv");
                 for (int i = 0; i < 6; i++){
                     for (int j = 0; j < 7; j++){
