@@ -8,6 +8,9 @@ package connectfour;
  */
 public class ConnectFour{
 
+    /*
+     *currentPlayer set to 2 so that it will switch to 1 when game begins
+    */
     private int currentPlayer = 2;
 
     /**
@@ -47,6 +50,9 @@ public class ConnectFour{
         gameUI.endOfGameMessage(gameBoard);
     }
 
+    /*
+     * Switches the value of currentPlayer
+    */
     private int setPlayer(){
         if (currentPlayer == 1){
             currentPlayer = 2;
