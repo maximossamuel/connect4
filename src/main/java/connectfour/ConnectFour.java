@@ -10,7 +10,7 @@ public class ConnectFour{
 
     /*
      *currentPlayer set to 2 so that it will switch to 1 when game begins
-    */
+     */
     private int currentPlayer = 2;
 
     /**
@@ -52,7 +52,7 @@ public class ConnectFour{
 
     /*
      * Switches the value of currentPlayer
-    */
+     */
     private int setPlayer(){
         if (currentPlayer == 1){
             currentPlayer = 2;
@@ -63,19 +63,16 @@ public class ConnectFour{
         return currentPlayer;
     }
 
-    /**
+    /*
      * Accessor method for the player who's turn it currently is
-     * @return Returns the number of the player who has the current turn
      */
     public int getPlayer(){
         return setPlayer();
     }
 
-    /**
+    /*
      * Adjusts the currentPlayer after loading a file based on how
      * far into the game the saved game is.
-     * @param depth If the depth of the game is even, it will be made so that it
-     * will be player 1's turn. If odd, player 2
      */
     public void setTurnFromFile(int depth){
         if (depth % 2 == 0){
