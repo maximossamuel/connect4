@@ -1,9 +1,18 @@
 package connectfour;
 
+/**
+ * Containes the main method that runs the game and 
+ * keeps track of things like how many turns have been 
+ * done and who's turn it is.
+ */
 public class ConnectFour{
 
     private int currentPlayer = 2;
 
+    /**
+     * The main method. Program runs off what is contained in it.
+     * @param args Essential for main methods
+     */
     public static void main(String[] args){
         Board gameBoard = new Board();
         TextUI gameUI = new TextUI();
@@ -40,10 +49,20 @@ public class ConnectFour{
         return currentPlayer;
     }
 
+    /**
+     * Accessor method for the player who's turn it currently is
+     * @return Returns the number of the player who has the current turn
+     */
     public int getPlayer(){
         return setPlayer();
     }
 
+    /**
+     * Adjusts the currentPlayer after loading a file based on how
+     * far into the game the saved game is.
+     * @param depth If the depth of the game is even, it will be made so that it
+     * will be player 1's turn. If odd, player 2
+     */
     public void setTurnFromFile(int depth){
         if (depth % 2 == 0){
             currentPlayer = 2;

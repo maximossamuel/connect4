@@ -2,6 +2,9 @@ package connectfour;
 
 import java.util.Scanner;
 
+/**
+ * Handles all the output and input
+ */
 public class TextUI{
     private Scanner keyboardScanner;
 
@@ -15,6 +18,12 @@ public class TextUI{
     private String winnerString = "The winner is Player ";
     private String tieString = "It's a tie!\n";
 
+    /**
+     * Handles all the user inputs and outputs when trying
+     * to load the game from a file
+     * @return Returns a string containing the name of the file so
+     * it can be used in other methods to load the file.
+     */
     public String loadFromFilePrompts(){
         int userInput;
 
@@ -34,6 +43,13 @@ public class TextUI{
         }
     }
 
+    /**
+     * Handles all the input and output for each turn in the game. Prints the board,
+     * takes the user input, etc
+     * @param currentPlayer Used as parameters in methods to eventually change the board tokens to the
+     * appropriate player
+     * @param gameBoard Used to check and print the gameBoard
+     */
     public void turn(int currentPlayer, Board gameBoard){
         int userInput;
 
@@ -57,6 +73,11 @@ public class TextUI{
         }
     }
 
+    /**
+     * Prints the board one last time and announces whether there was
+     * a win or a tie
+     * @param gameBoard Used so that the board can be printed one last time
+     */
     public void endOfGameMessage(Board gameBoard){
         System.out.println("============================================================");
         printBoard(gameBoard.toString());
@@ -116,6 +137,12 @@ public class TextUI{
         System.out.print(stringToPrint);
     }
 
+    /**
+     * Prints the winner or tie message depending on what is passed into 
+     * the winner parameter
+     * @param winner Passed from main to be checked. Will be considered a tie
+     * if it is -1. Otherwise will cause method to print a winning message for players 1 or 2.
+     */
     public void printWinner(int winner){
         if (winner == -1){
             printMessage(tieString);
@@ -124,6 +151,10 @@ public class TextUI{
         }
     }
 
+    /**
+     * Prints at a point where the user wants to load a file that either
+     * does not exist, is not valid or cannot be opened.
+     */
     public void printFileReadError(){
         printMessage(fileReadError);
     }

@@ -50,6 +50,8 @@ maximos@uoguelph.ca
 
 ## Development History
 
+* 0.8
+    * Added JavaDocs
 * 0.7
     * Added load and save from file functionality
     * Added winner/tie messages at the end of the game

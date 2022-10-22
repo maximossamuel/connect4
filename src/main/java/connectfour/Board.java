@@ -5,10 +5,21 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.File;
 
+/**
+ * Handles the tokens on the board and is responsible for 
+ * changing them when needed
+ */
 public class Board{
     private int[][] data = {{0,0,0,0,0,0,0},{0,0,0,0,0,0,0},{0,0,0,0,0,0,0},
                             {0,0,0,0,0,0,0},{0,0,0,0,0,0,0},{0,0,0,0,0,0,0}};
 
+    /**
+     * Takes in a string for a filename, opens the file and calls the 
+     * fileToBoard method with the new file variable
+     * @param filename String given for the name of the file
+     * @return Returns the depth of the game found within the file. This is to
+     * determine who's turn it is.
+     */
     public int openFile(String filename){
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader("assets/" + filename));
@@ -66,6 +77,13 @@ public class Board{
         return depth;
     }
 
+    /**
+     * Saves the current game board to a file
+     * @param filename Name of the file the board is being saved to
+     * @return returns either true or false in  so the program can
+     * have the user put in another name case the file already exists
+     */
+
     public boolean saveTofile(String filename){
         try {
             File newFile = new File("assets/" + filename + ".csv");
@@ -101,6 +119,16 @@ public class Board{
         return -1;
     }
 
+    /**
+     * Does all the necessary checks to see if a board token can be
+     * updated and then does so. 
+     * @param input The column the user inputted. Is put through a check
+     * in the method to see if a user's token can be inserted into said column.
+     * @param player The player who gave the input. Inserted in the function so
+     * that the token can be updated to the appropriate player
+     * @return Returns either true or false to see whether or not the user input
+     * was an illegal input
+     */
     public boolean updateBoard(int input, int player){
         int tokenIndexToBeUpdated = checkBoardToken(input);
         
@@ -112,8 +140,10 @@ public class Board{
         } 
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
+    /**
+     * Puts together the string that is printed every turn to represent
+     * the board
+     * @return Returns the mentioned string
      */
     public String toString(){
         String boardString = "| 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n";
@@ -134,6 +164,13 @@ public class Board{
         return boardString;
     }
 
+    /**
+     * Checks all possible win conditions on the board to see whether
+     * or not a winner has been found.
+     * @return Returns the winning player number. If not, returns -1 which
+     * allows the game to keep going or call a tie if 42 plays have been
+     * made.
+     */
     public int checkWinner(){
         for (int i = 0; i < 6; i++){
             for (int j = 0; j < 7; j++){
@@ -182,15 +219,4 @@ public class Board{
         }
         return -1;
     }
-
-/* this is a do-nothing method that was put here only so 
-you could have an example of junit testing.  Once you have other
-methods in the Board class and other tests you should delete
-this method and this comment */
-    public int returnSomething(){
-        return 1;
-    }
-
-    
-
 }
