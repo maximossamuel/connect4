@@ -8,6 +8,7 @@ import java.io.File;
 /**
  * Handles the tokens on the board and is responsible for 
  * changing them when needed
+ * @author Maximos Samuel
  */
 public class Board{
     private int[][] data = {{0,0,0,0,0,0,0},{0,0,0,0,0,0,0},{0,0,0,0,0,0,0},

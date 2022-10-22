@@ -4,6 +4,7 @@ package connectfour;
  * Containes the main method that runs the game and 
  * keeps track of things like how many turns have been 
  * done and who's turn it is.
+ * @author Maximos Samuel
  */
 public class ConnectFour{
 

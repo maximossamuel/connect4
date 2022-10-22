@@ -50,6 +50,8 @@ maximos@uoguelph.ca
 
 ## Development History
 
+* 1.0
+    * Added test cases
 * 0.9
     * Added inline comments
 * 0.8
