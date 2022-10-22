@@ -50,6 +50,8 @@ maximos@uoguelph.ca
 
 ## Development History
 
+* 0.9
+    * Added inline comments
 * 0.8
     * Added JavaDocs
 * 0.7

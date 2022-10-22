@@ -20,6 +20,10 @@ public class ConnectFour{
         String filename = gameUI.loadFromFilePrompts();
         int depth = 0;
 
+        /*
+         * Opening a file option. Program will shut down if there is an error opening
+         * the desired file
+         */
         if (filename != null){
             depth = gameBoard.openFile(filename);
 
@@ -31,6 +35,9 @@ public class ConnectFour{
             }
         }
 
+        /*
+         * Main gameplay. Printing of gameboard and handling of each turn.
+         */
         while (gameBoard.checkWinner() == -1 && depth < 42){
             gameUI.turn(game.getPlayer(), gameBoard);
             depth++;

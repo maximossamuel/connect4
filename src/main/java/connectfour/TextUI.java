@@ -98,6 +98,10 @@ public class TextUI{
 
         keyboardScanner = new Scanner(System.in);
 
+        /*
+         * Try-catch to prevent exceptions caused by users inputting values that are not
+         * integers.
+         */
         try {
             userInput = keyboardScanner.nextInt();
         }catch(Exception e) {

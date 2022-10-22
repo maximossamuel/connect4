@@ -29,15 +29,32 @@ public class Board{
         }
     }
 
+    /*
+     * Takes elements from file boards and puts them into the game board
+     */
     private int fileToBoard(BufferedReader file){
         int numP1Moves = 0;
         int numP2Moves = 0;
 
         for (int i = 0; i < 6; i++){
             try {
+
+                /*
+                 * String tokenization. Takes the commas out of the strings and puts everything inbetween the commas
+                 * in an array.
+                 */
                 String[] tokens = file.readLine().split(",");
                 for (int j = 0; j < 7; j++){
+
+                    /*
+                     * Conversion from string to int
+                     */
                     data[i][j] = Integer.parseInt(tokens[j]);
+
+                    /*
+                     * numP1Moves and numP2Moves made and used to ensure that a CSV file was not submitted where
+                     * player 2 made 4 more moves than player 1 for example
+                     */
                     if (data[i][j] == 1){
                         numP1Moves++;
                     }else if (data[i][j] == 2){
@@ -56,6 +73,10 @@ public class Board{
         return isFileValid();
     }
 
+    /*
+     * Checks to see that each column in the file does not have player tokens
+     * above empty tokens on the board.
+     */
     private int isFileValid(){
         int depth = 0;
 
@@ -109,6 +130,9 @@ public class Board{
         }
     } 
 
+    /*
+     * Check to see that there is an empty spot in the user's desired column on the board
+     */
     private int checkBoardToken(int input){
         for (int i = 5; i >= 0; i -= 1){
             if (data[i][input - 1] == 0){
