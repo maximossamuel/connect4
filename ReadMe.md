@@ -4,28 +4,44 @@ This is a Connect Four game meant for two players.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This ConnectFour game was written using Object-Oriented programming. There are 3 main classes. The Board class handles the tokens on the
+board and is responsible for changing them when needed. TextUI handles all the output and input. ConnectFour contained the main method
+that ran the game and kept track of things like how many turns had been done and who's turn it was. 
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing and running your program.
+* Have the latest versions of java and gradle installed on your machine before attempting to run this program
 
 
 
 ### Executing program
 
-* How to build and run the program
-* Step-by-step bullets
-```
-use code blocks for commands
-```
-* include the expected output
+* Open a terminal (powershell in windows, terminal on mac, etc)
 
-## Limitations
+* Navigate to the folder 'A2' containing the build.gradle file
 
-What isn't done? What things cause errors?  
+* Input..
+
+```
+gradle build
+```
+
+* It should say 'build successful'. After that, input.. 
+
+```
+gradle run
+```
+
+* You should find the command that runs the program. It should look like...
+
+```
+java -cp build/classes/java/main connectfour.ConnectFour
+```
+
+* Copy and paste into the command line. The program should run.
+
 
 ## Author Information
 
@@ -33,8 +49,6 @@ Maximos Samuel
 maximos@uoguelph.ca
 
 ## Development History
-
-Keep a log of what things you accomplish when.  You can use git's tagging feature to tag the versions or you can reference commits.
 
 * 0.7
     * Added load and save from file functionality
