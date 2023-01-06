@@ -1,4 +1,4 @@
-# CIS*2430 A2: Connect Four
+# Connect Four
 
 This is a Connect Four game meant for two players.
 
